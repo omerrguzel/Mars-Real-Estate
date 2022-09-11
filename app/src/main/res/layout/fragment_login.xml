@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/linear_gradient_background"
+    tools:context=".LoginFragment">
+
+    <ImageView
+        android:id="@+id/imageViewMars"
+        android:layout_width="546dp"
+        android:layout_height="403dp"
+        android:layout_marginEnd="-67dp"
+        android:layout_marginBottom="400dp"
+        android:src="@drawable/ic_mars"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ImageContrastCheck,ContentDescription" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/splashAnimation"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/padlock"
+        app:lottie_repeatCount="0"
+        tools:ignore="ImageContrastCheck" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="321dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="100dp"
+        android:autofillHints=""
+        android:backgroundTint="@color/sun"
+        android:fontFamily="@font/nunito"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textColor="@color/sun"
+        android:textColorHint="@color/sun"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashAnimation" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="321dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/sun"
+        android:fontFamily="@font/nunito"
+        android:hint="@string/password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:textColor="@color/sun"
+        android:textColorHint="@color/sun"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUsername" />
+
+    <Button
+        android:id="@+id/buttonSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/custom_button"
+        android:lineHeight="29.96dp"
+        android:text="@string/sign_in"
+        android:textAllCaps="false"
+        android:textFontWeight="700"
+        android:textSize="22sp"
+        app:backgroundTint="@color/get_started_button_color"
+        app:iconGravity="textEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

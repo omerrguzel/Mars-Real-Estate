@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MarsRealEstate</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_s_find_your_nhome_in_mars_with_nmars_real_estate">Let\'s Find Your \nHome in Mars with \nMars Real Estate</string>
+    <string name="mars">Mars</string>
+    <string name="mars_real_estate">Mars Real Estate</string>
+    <string name="let_s_go">Let\'s Go</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="sign_in">Sign In</string>
+</resources>
