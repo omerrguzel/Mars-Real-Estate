@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.oguzel.marsrealestate.databinding.FragmentLoginBinding
@@ -34,7 +33,6 @@ class LoginFragment : Fragment() {
         binding.buttonSignIn.setOnClickListener {
             loginAuth(binding.editTextUsername,binding.editTextPassword,binding.splashAnimation)
         }
-
     }
 
     private fun loginAuth(username: EditText, password: EditText, animation : LottieAnimationView) {
