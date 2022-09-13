@@ -2,6 +2,8 @@ package com.oguzel.marsrealestate
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,10 +17,10 @@ import com.oguzel.marsrealestate.listener.IMarsPhotoClickListener
 class GridRecyclerViewAdapter :
     RecyclerView.Adapter<GridRecyclerViewAdapter.GridRecyclerViewHolder>() {
 
-//    private lateinit var marsInfoList : List<MarsInfoItem>
+    //    private lateinit var marsInfoList : List<MarsInfoItem>
 //    private var marsInfoList?: List<MarsInfoItem> = []
     private var listener: IMarsPhotoClickListener? = null
-    private val diffCallback = object : DiffUtil.ItemCallback<MarsInfoItem>(){
+    private val diffCallback = object : DiffUtil.ItemCallback<MarsInfoItem>() {
         override fun areItemsTheSame(oldItem: MarsInfoItem, newItem: MarsInfoItem): Boolean {
             return oldItem.id == newItem.id
         }
@@ -28,19 +30,22 @@ class GridRecyclerViewAdapter :
         }
     }
 
-    private val differ = AsyncListDiffer(this,diffCallback)
-        var marsInfoList : List<MarsInfoItem>
-            get() = differ.currentList
-            set(value) {differ.submitList(value)}
+    private val differ = AsyncListDiffer(this, diffCallback)
+    var marsInfoList: List<MarsInfoItem>
+        get() = differ.currentList
+        set(value) {
+            differ.submitList(value)
+        }
 
     inner class GridRecyclerViewHolder(val binding: ItemMarsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: MarsInfoItem, listener: IMarsPhotoClickListener?) {
-            Glide.with(binding.marsImage.context)
-                .load(item.img_src)
-                .apply(RequestOptions().override(200, 200))
-                .into(binding.marsImage)
+            bindImage(binding.marsImage,item.img_src)
+//            Glide.with(binding.marsImage.context)
+//                .load(item.img_src)
+//                .apply(RequestOptions().override(200, 200))
+//                .into(binding.marsImage)
             binding.marsImage.setOnClickListener { listener?.onClick(item) }
         }
     }
@@ -70,5 +75,20 @@ class GridRecyclerViewAdapter :
 
     fun setMarsPhotoOnClickListener(listener: IMarsPhotoClickListener) {
         this.listener = listener
+    }
+
+    fun bindImage(imgView: ImageView, imgUrl: String?) {
+        imgUrl?.let {
+            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+            Glide.with(imgView.context)
+                .load(imgUri)
+                .apply(
+                    RequestOptions()
+                        .placeholder(R.drawable.loading_animation)
+                        .error(R.drawable.ic_broken_image)
+                        .override(150 , 150)
+                )
+                .into(imgView)
+        }
     }
 }

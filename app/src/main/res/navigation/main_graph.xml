@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_getStartedFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/splashFragment"
+            app:popUpTo="@id/getStartedFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -24,7 +24,7 @@
         <action
             android:id="@+id/action_loginFragment_to_main_graph"
             app:destination="@id/main_graph"
-            app:popUpTo="@id/splashFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <include app:graph="@navigation/real_estate_graph" />
