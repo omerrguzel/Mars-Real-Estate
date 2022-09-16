@@ -18,5 +18,22 @@
         android:id="@+id/realEstateDetailFragment"
         android:name="com.oguzel.marsrealestate.RealEstateDetailFragment"
         android:label="fragment_real_estate_detail"
-        tools:layout="@layout/fragment_real_estate_detail" />
+        tools:layout="@layout/fragment_real_estate_detail" >
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="price"
+            app:argType="integer"
+            app:nullable="false" />
+        <argument
+            android:name="type"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="imageURL"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

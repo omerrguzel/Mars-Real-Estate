@@ -8,4 +8,7 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="sign_in">Sign In</string>
+    <string name="buy_or_rent">%1$s NOW</string>
+    <string name="id">ID</string>
+    <string name="price">Price</string>
 </resources>

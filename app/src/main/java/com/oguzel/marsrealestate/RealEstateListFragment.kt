@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.oguzel.marsrealestate.data.MarsInfoItem
 import com.oguzel.marsrealestate.databinding.FragmentRealEstateListBinding
 import com.oguzel.marsrealestate.listener.IMarsPhotoClickListener
-import retrofit2.*
-
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RealEstateListFragment : Fragment() {
 
@@ -30,23 +31,33 @@ class RealEstateListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupRecyclerView()
         setupData()
     }
 
     fun setupRecyclerView() = binding.marsGridPhotos.apply {
         adapter = gridRecyclerViewAdapter
-        layoutManager = GridLayoutManager(requireContext(),2)
+        layoutManager = GridLayoutManager(requireContext(), 2)
         gridRecyclerViewAdapter.setMarsPhotoOnClickListener(object : IMarsPhotoClickListener {
-            override fun onClick(name: MarsInfoItem) {
-                findNavController().navigate(R.id.action_realEstateListFragment_to_realEstateDetailFragment)
+            override fun onClick(item: MarsInfoItem) {
+                val action =
+                    RealEstateListFragmentDirections.actionRealEstateListFragmentToRealEstateDetailFragment(
+                        item.id,
+                        item.price,
+                        item.type,
+                        item.img_src
+                    )
+                findNavController().navigate(action)
             }
         })
     }
-    fun setupData(){
+
+    fun setupData() {
         MarsApi.retrofitService.getProperties().enqueue(object : Callback<List<MarsInfoItem>> {
-            override fun onResponse(call: Call<List<MarsInfoItem>>, response: Response<List<MarsInfoItem>>) {
+            override fun onResponse(
+                call: Call<List<MarsInfoItem>>,
+                response: Response<List<MarsInfoItem>>
+            ) {
                 response.body()?.let { responseList ->
                     gridRecyclerViewAdapter.setData(responseList)
                     Log.v("TAG", responseList.toString())
@@ -54,7 +65,7 @@ class RealEstateListFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<List<MarsInfoItem>>, t: Throwable) {
-                Log.v("TAG",t.message.toString())
+                Log.v("TAG", t.message.toString())
             }
         })
     }

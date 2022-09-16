@@ -17,5 +17,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/real_estate_graph"/>
+        app:navGraph="@navigation/real_estate_graph" />
 </androidx.constraintlayout.widget.ConstraintLayout>

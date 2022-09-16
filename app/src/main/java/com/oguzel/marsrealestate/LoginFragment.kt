@@ -3,16 +3,15 @@ package com.oguzel.marsrealestate
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.oguzel.marsrealestate.databinding.FragmentLoginBinding
-
 
 class LoginFragment : Fragment() {
 
@@ -29,13 +28,12 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.buttonSignIn.setOnClickListener {
-            loginAuth(binding.editTextUsername,binding.editTextPassword,binding.splashAnimation)
+            loginAuth(binding.editTextUsername, binding.editTextPassword, binding.splashAnimation)
         }
     }
 
-    private fun loginAuth(username: EditText, password: EditText, animation : LottieAnimationView) {
+    private fun loginAuth(username: EditText, password: EditText, animation: LottieAnimationView) {
         if (username.text.toString() == "admin" && password.text.toString() == "admin") {
             //Login Successful
             animation.visibility = View.VISIBLE
@@ -49,5 +47,4 @@ class LoginFragment : Fragment() {
             Toast.makeText(requireContext(), "Login Failed", Toast.LENGTH_SHORT).show()
         }
     }
-
 }
