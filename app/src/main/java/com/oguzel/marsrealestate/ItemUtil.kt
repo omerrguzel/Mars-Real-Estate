@@ -8,7 +8,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 interface ItemUtil {
-
+    /**
+     * Bind Image function where we use Glide to show related image in ImageView
+     * @param imgView ImageView that image will be shown
+     * @param imgUrl  Image source url
+     */
     fun bindImage(imgView: ImageView, imgUrl: String?) {
         imgUrl?.let {
             val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
@@ -23,6 +27,11 @@ interface ItemUtil {
         }
     }
 
+    /**
+     * formatPrice function formats price for user to observe it more clearly (thousand,million etc.)
+     * @param price Item price will be given as input
+     * @return  New formatted price
+     */
     fun formatPrice(price: Int): String {
         val formatter: NumberFormat = DecimalFormat("#,###")
         return formatter.format(price)

@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.oguzel.marsrealestate.databinding.FragmentGetStartedBinding
 
+/**
+ * This fragment controls Get Started Screen
+ */
 class GetStartedFragment : Fragment() {
 
     private var _binding: FragmentGetStartedBinding? = null
@@ -27,15 +30,24 @@ class GetStartedFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * In this function text of TextView and button action is being defined
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val welcomeText = binding.textView
-        welcomeText.text = writeWelcome()
-        binding.buttonLetsGo.setOnClickListener {
-            findNavController().navigate(R.id.action_getStartedFragment_to_loginFragment)
+        binding.apply {
+            textView.text = writeWelcome()
+            buttonLetsGo.setOnClickListener {
+                findNavController().navigate(R.id.action_getStartedFragment_to_loginFragment)
+            }
         }
     }
 
+    /**
+     * This function gets input from values/strings and parses and changes font and color of
+     * certain part of this string(welcome text)
+     * @return Final text to be viewed in TextView
+     */
     private fun writeWelcome(): SpannableString {
         val fullText = getString(R.string.let_s_find_your_nhome_in_mars_with_nmars_real_estate)
         val marsText = getString(R.string.mars)

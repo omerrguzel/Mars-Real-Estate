@@ -27,11 +27,16 @@ class RealEstateDetailFragment : Fragment(), ItemUtil {
         initView()
     }
 
-    fun initView() {
-        bindImage(binding.imageViewMarsImage, args.imageURL)
-        binding.textViewID.text = args.id
-        binding.buttonBuyOrRent.text =
-            requireContext().getString(R.string.buy_or_rent, args.type?.uppercase())
-        binding.textViewPrice.text = formatPrice(args.price) + "$"
+    /**
+     * Sent arguments from list fragment is binded to View
+     */
+    private fun initView() {
+        binding.apply {
+            bindImage(imageViewMarsImage, args.imageURL)
+            textViewID.text = args.id
+            buttonBuyOrRent.text =
+                requireContext().getString(R.string.buy_or_rent, args.type?.uppercase())
+            (formatPrice(args.price) + "$").also { textViewPrice.text = it }
+        }
     }
 }

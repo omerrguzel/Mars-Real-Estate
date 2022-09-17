@@ -9,6 +9,9 @@ import com.oguzel.marsrealestate.data.MarsInfoItem
 import com.oguzel.marsrealestate.databinding.ItemMarsBinding
 import com.oguzel.marsrealestate.listener.IMarsPhotoClickListener
 
+/**
+ * Adapter for GridRecyclerView
+ */
 class GridRecyclerViewAdapter :
     RecyclerView.Adapter<GridRecyclerViewAdapter.GridRecyclerViewHolder>() {
 
@@ -33,12 +36,17 @@ class GridRecyclerViewAdapter :
     inner class GridRecyclerViewHolder(val binding: ItemMarsBinding) :
         RecyclerView.ViewHolder(binding.root), ItemUtil {
 
+        /**
+         * Function to bind item with data
+         * @param item MarsInfoItem to get from api
+         * @param listener listener to bind onClick method to item
+         */
         fun bind(item: MarsInfoItem, listener: IMarsPhotoClickListener?) {
             bindImage(binding.marsImage, item.img_src)
             if (item.type == "buy") {
                 binding.imageViewType.setImageResource(R.drawable.ic_sale)
             }
-            binding.textViewListPrice.text = formatPrice(item.price) + "$"
+            (formatPrice(item.price) + "$").also { binding.textViewListPrice.text = it }
             binding.marsImage.setOnClickListener { listener?.onClick(item) }
         }
     }

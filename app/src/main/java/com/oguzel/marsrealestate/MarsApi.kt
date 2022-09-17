@@ -4,15 +4,14 @@ import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Setup for MarsApi that uses Retrofit
+ */
 object MarsApi {
 
     private const val BASE_URL = "https://mars.udacity.com/"
 
-    val moshi = Moshi.Builder().build()
-
     val retrofit = Retrofit.Builder()
-        // .addConverterFactory(ScalarsConverterFactory.create()) // String response
-        // .addConverterFactory(MoshiConverterFactory.create(moshi)) // Convert JSON
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(BASE_URL)
         .build()

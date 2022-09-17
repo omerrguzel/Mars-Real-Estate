@@ -33,6 +33,13 @@ class LoginFragment : Fragment() {
         }
     }
 
+    /**
+     * This function verifies username and password. Successful attempt starts animation and
+     * navigates to RealEstateListScreen
+     * @param username Only 'admin' returns true
+     * @param password Only 'admin' returns true
+     * @param animation Lottie padlock animation
+     */
     private fun loginAuth(username: EditText, password: EditText, animation: LottieAnimationView) {
         if (username.text.toString() == "admin" && password.text.toString() == "admin") {
             //Login Successful

@@ -35,24 +35,30 @@ class RealEstateListFragment : Fragment() {
         setupData()
     }
 
-    fun setupRecyclerView() = binding.marsGridPhotos.apply {
+    /**
+     * Function to bind recyclerView adapter to recyclerView in UI
+     */
+    private fun setupRecyclerView() = binding.marsGridPhotos.apply {
         adapter = gridRecyclerViewAdapter
         layoutManager = GridLayoutManager(requireContext(), 2)
         gridRecyclerViewAdapter.setMarsPhotoOnClickListener(object : IMarsPhotoClickListener {
-            override fun onClick(item: MarsInfoItem) {
+            override fun onClick(name : MarsInfoItem) {
                 val action =
                     RealEstateListFragmentDirections.actionRealEstateListFragmentToRealEstateDetailFragment(
-                        item.id,
-                        item.price,
-                        item.type,
-                        item.img_src
+                        name.id,
+                        name.price,
+                        name.type,
+                        name.img_src
                     )
                 findNavController().navigate(action)
             }
         })
     }
 
-    fun setupData() {
+    /**
+     * Function to get properties of MarsApi and set to recyclerView adapter
+     */
+    private fun setupData() {
         MarsApi.retrofitService.getProperties().enqueue(object : Callback<List<MarsInfoItem>> {
             override fun onResponse(
                 call: Call<List<MarsInfoItem>>,
