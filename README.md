@@ -21,7 +21,7 @@
 
 ## About The Project
 
-Mars Real Estate is an application that shows you buyable/rentable real estates on Mars. This project also includes assignment of the 4th week of Patika-FMSS bootcamp. 
+Mars Real Estate is an application that shows you buyable/rentable real estates on Mars. This project also includes 4th week assignment of Patika-FMSS bootcamp. 
 
 ## Preview
 
